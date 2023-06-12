@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Amaototi's Site</title><link>https://blog.amaototi.dev/</link><description>Recent content on Amaototi's Site</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 03 May 2023 09:08:51 +0900</lastBuildDate><atom:link href="https://blog.amaototi.dev/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugoでブログを作成した件</title><link>https://blog.amaototi.dev/p/make_blog/</link><pubDate>Wed, 03 May 2023 09:08:51 +0900</pubDate><guid>https://blog.amaototi.dev/p/make_blog/</guid><description>&lt;img src="https://blog.amaototi.dev/p/make_blog/hugo_logo.png" alt="Featured image of post Hugoでブログを作成した件" />&lt;h2 id="はじめに">はじめに&lt;/h2>
+&lt;p>勢いでこのブログを作成したので、いろんな壁にぶち当たりながらなんとか作成した感じになっています。
+作った当日にこのブログを書くことでなるべく、忘れないうちに備忘録として残しておけるようにしたいって感じですかね。
+まぁあとはきっと他の誰かが見て参考にしてくれたら嬉しいなの気持ちもちょっとあったりしたり。&lt;/p>
+&lt;h2 id="環境">環境&lt;/h2>
+&lt;ul>
+&lt;li>Arch Linux x86_64&lt;/li>
+&lt;li>hugo v0.111.3+extended linux/amd64 BuildDate=unknown&lt;/li>
+&lt;li>git version 2.40.1&lt;/li>
+&lt;li>GitHub Pages&lt;/li>
+&lt;/ul>
+&lt;h2 id="hugoのインストール">Hugoのインストール&lt;/h2>
+&lt;p>自分はArch Linuxの環境だったので、以下のコマンドでインストール。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">$ pacman -S hugo
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>他のOSを使っている人は、難しいものでもないので&lt;a class="link" href="https://gohugo.io/installation/" target="_blank" rel="noopener"
+>公式HP&lt;/a>から確認してください。&lt;/p>
+&lt;p>インストールが終わったら今度は、&lt;code>hugo new site &amp;lt;string&amp;gt;&lt;/code>で新たにディレクトリごとページを作成。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">$ hugo new site &lt;span class="nb">test&lt;/span>
+Congratulations! Your new Hugo site is created in /home/amaototi/test.
+Just a few more steps and you&lt;span class="err">&amp;#39;&lt;/span>re ready to go:
+1. Download a theme into the same-named folder.
+Choose a theme from https://themes.gohugo.io/ or
+create your own with the &lt;span class="s2">&amp;#34;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;#34;&lt;/span> command.
+2. Perhaps you want to add some content. You can add single files
+with &lt;span class="s2">&amp;#34;hugo new &amp;lt;SECTIONNAME&amp;gt;/&amp;lt;FILENAME&amp;gt;.&amp;lt;FORMAT&amp;gt;&amp;#34;&lt;/span>.
+3. Start the built-in live server via &lt;span class="s2">&amp;#34;hugo server&amp;#34;&lt;/span>.
+Visit https://gohugo.io/ &lt;span class="k">for&lt;/span> quickstart guide and full documentation.
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="テーマの設定">テーマの設定&lt;/h2>
+&lt;p>Hugoはテーマを自由に決めることができるとてもカスタマイズ性の高いフレームワークなので、自分で好みのテーマを探すと良いです。
+自分はStackというテーマに。テーマは&lt;a class="link" href="https://themes.gohugo.io/" target="_blank" rel="noopener"
+>こちら&lt;/a>からどうぞ。&lt;/p>
+&lt;p>テーマを決めたら&lt;code>git init&lt;/code>からの&lt;code>git submodule add https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack&lt;/code>でテーマをインストール。ここは各自選んだテーマのドキュメントを確認してください。&lt;/p>
+&lt;p>インストールができたら、&lt;code>themes/hugo-themes-stack/examples&lt;/code>の中にある&lt;code>config.yaml&lt;/code>と&lt;code>content/&lt;/code>を先程作成したディレクトリ直下にコピー。その際、&lt;code>config.toml&lt;/code>は削除します。&lt;/p>
+&lt;p>ここまで終わった状態で&lt;code>hugo server -D&lt;/code>をして、&lt;code>http://localhost:1313/&lt;/code>にアクセスすると、、、&lt;/p>
+&lt;p>&lt;img src="https://blog.amaototi.dev/p/make_blog/hugo_test.png"
+width="1570"
+height="985"
+srcset="https://blog.amaototi.dev/p/make_blog/hugo_test_hu593a87b880bdb1a81c067c5062ff04f2_447402_480x0_resize_box_3.png 480w, https://blog.amaototi.dev/p/make_blog/hugo_test_hu593a87b880bdb1a81c067c5062ff04f2_447402_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="159"
+data-flex-basis="382px"
+>&lt;/p>
+&lt;p>といった感じで動きます。感動。
+そしたら次はカスタマイズをしてきます。&lt;/p>
+&lt;p>と言ってもやることは、不必要なexampleを消すのと、config.yamlの編集を行うだけ。&lt;/p>
+&lt;h3 id="変更点">変更点&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>languageCode&lt;/code>と&lt;code>DefaultContentLnaguage&lt;/code>を&lt;code>ja&lt;/code>に&lt;/li>
+&lt;li>&lt;code>publishDir: docs&lt;/code>をどっか適当に追記&lt;/li>
+&lt;li>&lt;code>parms&lt;/code>内部
+&lt;ul>
+&lt;li>&lt;code>sidebar&lt;/code>の中身全般
+&lt;ul>
+&lt;li>&lt;code>emoji&lt;/code>はアイコンの右下にちっちゃくつくやつ&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;code>article&lt;/code>の中身ちょっと
+&lt;ul>
+&lt;li>&lt;code>math&lt;/code>は数学の記法をつかえるようにするかどうか&lt;/li>
+&lt;li>&lt;code>toc&lt;/code>は目次の表示非表示&lt;/li>
+&lt;li>&lt;code>readingTime&lt;/code>は読了時間の表示&lt;/li>
+&lt;li>&lt;code>license&lt;/code>はライセンスの表示&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;code>menu&lt;/code>内部
+&lt;ul>
+&lt;li>&lt;code>social&lt;/code>の中身
+&lt;ul>
+&lt;li>&lt;code>GitHub&lt;/code>と&lt;code>Twitter&lt;/code>のリンクを追加&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>だいたいこの程度の変更。あとは、公式ドキュメントを読んだり、先人たちの知恵を借りたりという感じ。&lt;/p>
+&lt;h2 id="github-pagesに登録">GitHub Pagesに登録&lt;/h2>
+&lt;p>GitHub Pagesを使うことで無料で公開することができるとのことだったので実践。&lt;/p>
+&lt;p>GitHubでリポジトリを作成し、Settings &amp;gt; Pagesから設定を行い公開する。
+この際、&lt;code>config.yaml&lt;/code>の&lt;code>baseurl&lt;/code>を&lt;code>https://&amp;lt;username&amp;gt;.github.io/&amp;lt;repoの名前&amp;gt;&lt;/code>に変更することを忘れずに行うこと。&lt;/p>
+&lt;p>また、カスタムドメインにする際も、同様に&lt;code>baseurl&lt;/code>をちゃんと設定してあげないとバグるので要注意。&lt;/p>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>思ってたよりも数倍簡単にブログを作れて良かったなというお気持ち。&lt;/p>
+&lt;p>今度は、勝手にpushとかしてくれるようにしたいな。&lt;/p></description></item><item><title>About</title><link>https://blog.amaototi.dev/about/</link><pubDate>Wed, 03 May 2023 06:00:36 +0900</pubDate><guid>https://blog.amaototi.dev/about/</guid><description>&lt;h1 id="名前">名前&lt;/h1>
+&lt;ul>
+&lt;li>Amaototi&lt;br>
+いちごの&amp;quot;あまおう&amp;quot;と&amp;quot;とちおとめ&amp;quot;と組み合わせて作った名前です。本名は一切絡んでいません。&lt;br>
+ちなみに、一番好きな果物は梨です。&lt;/li>
+&lt;/ul>
+&lt;h1 id="趣味">趣味&lt;/h1>
+&lt;ul>
+&lt;li>プログラミング&lt;br>
+初学者です。PythonとGoの基本文法だけわかります。それ以外は何もわかりません。&lt;/li>
+&lt;li>読書&lt;br>
+月に1冊読めればいいかなって感じです。最近は積み本が増える一方。&lt;/li>
+&lt;li>ゲーム&lt;br>
+最近は専らFPSをしたり、ゲームの大会を見たりしてます。&lt;/li>
+&lt;li>歌&lt;br>
+平凡だね。&lt;/li>
+&lt;/ul>
+&lt;p>猫をこよなく愛しています。&lt;/p>
+&lt;h1 id="sns一覧">SNS一覧&lt;/h1>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://twitter.com/Amaototi1024" target="_blank" rel="noopener"
+>Twitter&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/Amaototi" target="_blank" rel="noopener"
+>GitHub&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://misskey.io/@amaototi" target="_blank" rel="noopener"
+>misskey&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>ブログが完成した</title><link>https://blog.amaototi.dev/p/my_first_blog/</link><pubDate>Wed, 03 May 2023 06:00:36 +0900</pubDate><guid>https://blog.amaototi.dev/p/my_first_blog/</guid><description>&lt;img src="https://blog.amaototi.dev/p/my_first_blog/my_cat.jpg" alt="Featured image of post ブログが完成した" />&lt;h2 id="ブログを作りました">ブログを作りました&lt;/h2>
+&lt;p>なんとなく作りたいなと思ったので勝手に深夜テンションで作成してみた。勢いでドメインを購入し、詳しい人にどうすればよいか話を聞き、自分でフレームワークを探してごちゃごちゃしてみるという経験をしたが、とても良かった✌&lt;br>
+後でこのブログを作るのにあたって苦労した点をまとめたいなと。&lt;/p>
+&lt;h2 id="環境">環境&lt;/h2>
+&lt;ul>
+&lt;li>Hugo&lt;br>
+静的サイトジェネレータのHugoでサイトを作成してみた。まぁ結構簡単に作れたと思う。他の個人ブログ様々です。&lt;/li>
+&lt;li>GitHub Pages&lt;br>
+GitHubにて無料でサイトを公開できる機能(?)を使ってみた。まぁ結構いいかも。&lt;/li>
+&lt;li>Google Domain&lt;br>
+ドメインの取得に使ったサイト。天下のGoogle様にお世話になりましたとさ。&lt;/li>
+&lt;/ul>
+&lt;h2 id="参考文献">参考文献&lt;/h2>
+&lt;ul>
+&lt;li>HUGO
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://gohugo.io/" target="_blank" rel="noopener"
+>https://gohugo.io/&lt;/a>&lt;/li>
+&lt;li>最終閲覧: 2023-03-05&lt;br>
+このサイトのフレームワークです。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Stack
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://stack.jimmycai.com/" target="_blank" rel="noopener"
+>https://stack.jimmycai.com/&lt;/a>&lt;/li>
+&lt;li>最終閲覧: 2023-03-05&lt;br>
+このブログで採用しているhugoのテーマです。オシャンティーだね。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>hugoを使って爆速でブログを作成する
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://zenn.dev/harachan/articles/a043e9a756cae4" target="_blank" rel="noopener"
+>https://zenn.dev/harachan/articles/a043e9a756cae4&lt;/a>&lt;/li>
+&lt;li>最終閲覧: 2023-05-03&lt;br>
+日本語の情報があって助かったよね。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>非エンジニアの初心者がHugo(テーマStack)+GitHub Pagesでブログを開設するまで
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://miiitomi.github.io/p/hugo/" target="_blank" rel="noopener"
+>https://miiitomi.github.io/p/hugo/&lt;/a>&lt;/li>
+&lt;li>最終閲覧: 2023-05-03&lt;br>
+結構参考にした。自分が使いたいテーマを使っていたので、めっちゃ助かりました。神。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="まとめ">まとめ&lt;/h2>
+&lt;p>2, 3時間で完成まで持っていけたのはすごくいい感じだった。それに、Markdownで書けるってだけで圧倒的優勝みたいなところはある。&lt;/p>
+&lt;p>日常的なこととか、簡単な技術的な話はここに書くことにします。&lt;del>今までほとんど書いたことないけどね。&lt;/del>&lt;/p></description></item><item><title>Archives</title><link>https://blog.amaototi.dev/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://blog.amaototi.dev/archives/</guid><description/></item><item><title>Search</title><link>https://blog.amaototi.dev/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.amaototi.dev/search/</guid><description/></item></channel></rss>

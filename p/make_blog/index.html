@@ -1,0 +1,304 @@
+<!doctype html><html lang=ja dir=ltr>
+<head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Hugoという静的サイトジェネレータでこのブログを作成したことの記録">
+<title>Hugoでブログを作成した件</title>
+<link rel=canonical href=https://blog.amaototi.dev/p/make_blog/>
+<link rel=stylesheet href=/scss/style.min.a4b80d2ef8cb84c7da62c3254fd754fcbb42f0bb2f1ebc43e8390d10ff6e5c80.css><meta property="og:title" content="Hugoでブログを作成した件">
+<meta property="og:description" content="Hugoという静的サイトジェネレータでこのブログを作成したことの記録">
+<meta property="og:url" content="https://blog.amaototi.dev/p/make_blog/">
+<meta property="og:site_name" content="Amaototi's Site">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Hugo"><meta property="article:tag" content="GitHub"><meta property="article:tag" content="備忘録"><meta property="article:published_time" content="2023-05-03T09:08:51+09:00"><meta property="article:modified_time" content="2023-05-03T09:08:51+09:00"><meta property="og:image" content="https://blog.amaototi.dev/p/make_blog/hugo_logo.png">
+<meta name=twitter:title content="Hugoでブログを作成した件">
+<meta name=twitter:description content="Hugoという静的サイトジェネレータでこのブログを作成したことの記録"><meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.amaototi.dev/p/make_blog/hugo_logo.png">
+<link rel="shortcut icon" href=img/favicon.ico>
+</head>
+<body class=article-page>
+<script>(function(){const a='StackColorScheme';localStorage.getItem(a)||localStorage.setItem(a,"auto")})()</script><script>(function(){const b='StackColorScheme',a=localStorage.getItem(b),c=window.matchMedia('(prefers-color-scheme: dark)').matches===!0;a=='dark'||a==='auto'&&c?document.documentElement.dataset.scheme='dark':document.documentElement.dataset.scheme='light'})()</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky">
+<button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=メニューを開く・閉じる>
+<span class=hamburger-box>
+<span class=hamburger-inner></span>
+</span>
+</button>
+<header>
+<figure class=site-avatar>
+<a href=/>
+<img src=/img/icon_hude46e8b905501c4091679152d407a7a9_131849_300x0_resize_box_3.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a>
+<span class=emoji>😺</span>
+</figure>
+<div class=site-meta>
+<h1 class=site-name><a href=/>Amaototi's Site</a></h1>
+<h2 class=site-description>あまおとちのブログ兼HP</h2>
+</div>
+</header><ol class=social-menu>
+<li>
+<a href=https://github.com/Amaototi target=_blank title=GitHub rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+</a>
+</li>
+<li>
+<a href=https://twitter.com/Amaototi1024 target=_blank title=Twitter rel=me><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84.0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/></svg>
+</a>
+</li>
+</ol><ol class=menu id=main-menu>
+<li>
+<a href=/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span>
+</a>
+</li>
+<li>
+<a href=/about/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About</span>
+</a>
+</li>
+<li>
+<a href=/archives/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span>
+</a>
+</li>
+<li>
+<a href=/search/><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span>
+</a>
+</li>
+<div class=menu-bottom-section>
+<li id=dark-mode-toggle><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>ダークモード</span>
+</li>
+</div>
+</ol>
+</aside>
+<aside class="sidebar right-sidebar sticky">
+<section class="widget archives">
+<div class=widget-icon><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+</div>
+<h2 class="widget-title section-title">目次</h2>
+<div class=widget--toc>
+<nav id=TableOfContents>
+<ol>
+<li><a href=#はじめに>はじめに</a></li>
+<li><a href=#環境>環境</a></li>
+<li><a href=#hugoのインストール>Hugoのインストール</a></li>
+<li><a href=#テーマの設定>テーマの設定</a>
+<ol>
+<li><a href=#変更点>変更点</a></li>
+</ol>
+</li>
+<li><a href=#github-pagesに登録>GitHub Pagesに登録</a></li>
+<li><a href=#まとめ>まとめ</a></li>
+</ol>
+</nav>
+</div>
+</section>
+</aside>
+<main class="main full-width">
+<article class="has-image main-article">
+<header class=article-header>
+<div class=article-image>
+<a href=/p/make_blog/>
+<img src=/p/make_blog/hugo_logo_huf6171ab9e39e99b8563bb3587a747fa8_37967_800x0_resize_box_3.png srcset="/p/make_blog/hugo_logo_huf6171ab9e39e99b8563bb3587a747fa8_37967_800x0_resize_box_3.png 800w, /p/make_blog/hugo_logo_huf6171ab9e39e99b8563bb3587a747fa8_37967_1600x0_resize_box_3.png 1600w" width=800 height=219 loading=lazy alt="Featured image of post Hugoでブログを作成した件">
+</a>
+</div>
+<div class=article-details>
+<header class=article-category>
+<a href=/categories/%E6%8A%80%E8%A1%93/>
+技術
+</a>
+</header>
+<div class=article-title-wrapper>
+<h2 class=article-title>
+<a href=/p/make_blog/>Hugoでブログを作成した件</a>
+</h2>
+<h3 class=article-subtitle>
+Hugoという静的サイトジェネレータでこのブログを作成したことの記録
+</h3>
+</div>
+<footer class=article-time>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>May 03, 2023</time>
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>
+読了時間: 1分
+</time>
+</div>
+</footer>
+</div>
+</header>
+<section class=article-content>
+<h2 id=はじめに>はじめに</h2>
+<p>勢いでこのブログを作成したので、いろんな壁にぶち当たりながらなんとか作成した感じになっています。
+作った当日にこのブログを書くことでなるべく、忘れないうちに備忘録として残しておけるようにしたいって感じですかね。
+まぁあとはきっと他の誰かが見て参考にしてくれたら嬉しいなの気持ちもちょっとあったりしたり。</p>
+<h2 id=環境>環境</h2>
+<ul>
+<li>Arch Linux x86_64</li>
+<li>hugo v0.111.3+extended linux/amd64 BuildDate=unknown</li>
+<li>git version 2.40.1</li>
+<li>GitHub Pages</li>
+</ul>
+<h2 id=hugoのインストール>Hugoのインストール</h2>
+<p>自分はArch Linuxの環境だったので、以下のコマンドでインストール。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ pacman -S hugo
+</code></pre></td></tr></table>
+</div>
+</div><p>他のOSを使っている人は、難しいものでもないので<a class=link href=https://gohugo.io/installation/ target=_blank rel=noopener>公式HP</a>から確認してください。</p>
+<p>インストールが終わったら今度は、<code>hugo new site &lt;string></code>で新たにディレクトリごとページを作成。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ hugo new site <span class=nb>test</span>
+Congratulations! Your new Hugo site is created in /home/amaototi/test.
+
+Just a few more steps and you<span class=err>&#39;</span>re ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/ or
+   create your own with the <span class=s2>&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
+2. Perhaps you want to add some content. You can add single files
+   with <span class=s2>&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
+3. Start the built-in live server via <span class=s2>&#34;hugo server&#34;</span>.
+
+Visit https://gohugo.io/ <span class=k>for</span> quickstart guide and full documentation.
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=テーマの設定>テーマの設定</h2>
+<p>Hugoはテーマを自由に決めることができるとてもカスタマイズ性の高いフレームワークなので、自分で好みのテーマを探すと良いです。
+自分はStackというテーマに。テーマは<a class=link href=https://themes.gohugo.io/ target=_blank rel=noopener>こちら</a>からどうぞ。</p>
+<p>テーマを決めたら<code>git init</code>からの<code>git submodule add https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack</code>でテーマをインストール。ここは各自選んだテーマのドキュメントを確認してください。</p>
+<p>インストールができたら、<code>themes/hugo-themes-stack/examples</code>の中にある<code>config.yaml</code>と<code>content/</code>を先程作成したディレクトリ直下にコピー。その際、<code>config.toml</code>は削除します。</p>
+<p>ここまで終わった状態で<code>hugo server -D</code>をして、<code>http://localhost:1313/</code>にアクセスすると、、、</p>
+<p><img src=/p/make_blog/hugo_test.png width=1570 height=985 srcset="/p/make_blog/hugo_test_hu593a87b880bdb1a81c067c5062ff04f2_447402_480x0_resize_box_3.png 480w, /p/make_blog/hugo_test_hu593a87b880bdb1a81c067c5062ff04f2_447402_1024x0_resize_box_3.png 1024w" loading=lazy class=gallery-image data-flex-grow=159 data-flex-basis=382px></p>
+<p>といった感じで動きます。感動。
+そしたら次はカスタマイズをしてきます。</p>
+<p>と言ってもやることは、不必要なexampleを消すのと、config.yamlの編集を行うだけ。</p>
+<h3 id=変更点>変更点</h3>
+<ul>
+<li><code>languageCode</code>と<code>DefaultContentLnaguage</code>を<code>ja</code>に</li>
+<li><code>publishDir: docs</code>をどっか適当に追記</li>
+<li><code>parms</code>内部
+<ul>
+<li><code>sidebar</code>の中身全般
+<ul>
+<li><code>emoji</code>はアイコンの右下にちっちゃくつくやつ</li>
+</ul>
+</li>
+<li><code>article</code>の中身ちょっと
+<ul>
+<li><code>math</code>は数学の記法をつかえるようにするかどうか</li>
+<li><code>toc</code>は目次の表示非表示</li>
+<li><code>readingTime</code>は読了時間の表示</li>
+<li><code>license</code>はライセンスの表示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>menu</code>内部
+<ul>
+<li><code>social</code>の中身
+<ul>
+<li><code>GitHub</code>と<code>Twitter</code>のリンクを追加</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>だいたいこの程度の変更。あとは、公式ドキュメントを読んだり、先人たちの知恵を借りたりという感じ。</p>
+<h2 id=github-pagesに登録>GitHub Pagesに登録</h2>
+<p>GitHub Pagesを使うことで無料で公開することができるとのことだったので実践。</p>
+<p>GitHubでリポジトリを作成し、Settings > Pagesから設定を行い公開する。
+この際、<code>config.yaml</code>の<code>baseurl</code>を<code>https://&lt;username>.github.io/&lt;repoの名前></code>に変更することを忘れずに行うこと。</p>
+<p>また、カスタムドメインにする際も、同様に<code>baseurl</code>をちゃんと設定してあげないとバグるので要注意。</p>
+<h2 id=まとめ>まとめ</h2>
+<p>思ってたよりも数倍簡単にブログを作れて良かったなというお気持ち。</p>
+<p>今度は、勝手にpushとかしてくれるようにしたいな。</p>
+</section>
+<footer class=article-footer>
+<section class=article-tags>
+<a href=/tags/hugo/>Hugo</a>
+<a href=/tags/github/>GitHub</a>
+<a href=/tags/%E5%82%99%E5%BF%98%E9%8C%B2/>備忘録</a>
+</section>
+</footer>
+</article>
+<div class=disqus-container>
+<div id=disqus_thread></div>
+<script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return}var b=document,a=b.createElement('script');a.async=!0,a.src='//hugo-theme-stack.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),(b.head||b.body).appendChild(a)})()</script>
+<noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
+<a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a>
+</div>
+<style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style>
+<script>window.addEventListener('onColorSchemeChange',a=>{typeof DISQUS=='object'&&DISQUS.reset({reload:!0})})</script>
+<footer class=site-footer>
+<section class=copyright>
+&copy;
+2020 -
+2023 Amaototi's Site
+</section>
+<section class=powerby>
+Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> <br>
+テーマ <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.16.0>Stack</a></b> は <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> によって設計されています。
+</section>
+</footer>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous>
+</main>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script>
+<script>(function(){const a=document.createElement('link');a.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",a.type="text/css",a.rel="stylesheet",document.head.appendChild(a)})()</script>
+</body>
+</html>
