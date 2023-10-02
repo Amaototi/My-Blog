@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技術 on Amaototi's Site</title><link>https://blog.amaototi.dev/categories/%E6%8A%80%E8%A1%93/</link><description>Recent content in 技術 on Amaototi's Site</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Wed, 03 May 2023 09:08:51 +0900</lastBuildDate><atom:link href="https://blog.amaototi.dev/categories/%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugoでブログを作成した件</title><link>https://blog.amaototi.dev/p/make_blog/</link><pubDate>Wed, 03 May 2023 09:08:51 +0900</pubDate><guid>https://blog.amaototi.dev/p/make_blog/</guid><description>&lt;img src="https://blog.amaototi.dev/p/make_blog/hugo_logo.png" alt="Featured image of post Hugoでブログを作成した件" />&lt;h2 id="はじめに">はじめに&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技術 on Amaototi's Site</title><link>https://blog.amaototi.dev/categories/%E6%8A%80%E8%A1%93/</link><description>Recent content in 技術 on Amaototi's Site</description><generator>Hugo -- gohugo.io</generator><language>ja</language><lastBuildDate>Tue, 09 May 2023 15:17:12 +0900</lastBuildDate><atom:link href="https://blog.amaototi.dev/categories/%E6%8A%80%E8%A1%93/index.xml" rel="self" type="application/rss+xml"/><item><title>Arch LinuxのKDEでX11からWaylandに切り替えてみた</title><link>https://blog.amaototi.dev/p/archlinux-wayland/</link><pubDate>Tue, 09 May 2023 15:17:12 +0900</pubDate><guid>https://blog.amaototi.dev/p/archlinux-wayland/</guid><description>&lt;img src="https://blog.amaototi.dev/p/archlinux-wayland/Wayland_Logo.png" alt="Featured image of post Arch LinuxのKDEでX11からWaylandに切り替えてみた" />&lt;h2 id="arch-linuxでwaylandを使いたい">Arch Linuxでwaylandを使いたい！&lt;/h2>
+&lt;p>という思いつきで色々自分で調べながら試したので、その備忘録です。&lt;/p>
+&lt;h2 id="注意">⚠注意⚠&lt;/h2>
+&lt;p>今回はNVIDIAのGPUを使っていません。NVIDIAのGPUを使う場合はまた違う操作が必要になるので、&lt;a class="link" href="https://wiki.archlinux.jp/index.php/Wayland#NVIDIA_.E3.83.89.E3.83.A9.E3.82.A4.E3.83.90" target="_blank" rel="noopener"
+>ArchWiki&lt;/a>で確認してください。&lt;/p>
+&lt;h3 id="環境">環境&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>名称&lt;/th>
+&lt;th>構成&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>CPU&lt;/td>
+&lt;td>Ryzen 5 5500U&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>GPU&lt;/td>
+&lt;td>AMD Radeon Graphics&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>OS&lt;/td>
+&lt;td>Arch Linux x86_64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>デスクトップ環境&lt;/td>
+&lt;td>Plasma&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>ディスプレイマネージャー&lt;/td>
+&lt;td>sddm&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="パッケージのインストール">パッケージのインストール&lt;/h2>
+&lt;h3 id="plasmaのwaylandパッケージをインストール">Plasmaのwaylandパッケージをインストール&lt;/h3>
+&lt;p>PlasmaでWaylandを使用するためには追加でplasma-wayland-sessionというパッケージをインストールする必要があります。インストールしていない場合はインストールしてください。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">$ pacman -S plasma-wayland-session
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="sddmの切り替え">sddmの切り替え&lt;/h3>
+&lt;p>通常のsddmパッケージではwaylandを動かすことができないので、AURパッケージであるsddm-gitに切り替えます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">$ pacman -S sddm-git
+looking &lt;span class="k">for&lt;/span> conflicting packages...
+:: sddm-git and sddm are in conflict. Remove sddm? &lt;span class="o">[&lt;/span>y/N&lt;span class="o">]&lt;/span> y &lt;span class="c1"># sddmをsddm-gitに置き換える&lt;/span>
+...
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="コンポジタ">コンポジタ&lt;/h3>
+&lt;p>コンポジタとして、KDEのKwinをインストールします。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">$ pacman -S KWin
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="設定ファイルの作成">設定ファイルの作成&lt;/h2>
+&lt;p>waylandで動かすために新たに設定ファイルを&lt;code>/etc/sddm.conf.d/&lt;/code>の下に作成します。ファイル名は&lt;code>/etc/sddm.conf.d/10-wayland.conf&lt;/code>としてください。また、ディレクトリが存在しない場合は作成してください。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">[General]
+DisplayServer=wayland
+GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell
+[Wayland]
+CompositorCommand=kwin_wayland --no-lockscreen
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>ファイルを保存したら再起動します。&lt;/p>
+&lt;h2 id="waylandでの起動">Waylandでの起動&lt;/h2>
+&lt;p>ログイン画面になったら、画面左上にあるプルダウンリストからWaylandを選択しそのままログインします。するとWaylandで起動することができます。&lt;/p>
+&lt;h3 id="デバッグツール">デバッグツール&lt;/h3>
+&lt;p>KWinを使用している場合、以下のコマンドを実行することでどのアプリケーションがWaylandで実行されているかの確認を行えます。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">$ qdbus org.kde.KWin /KWin org.kde.KWin.showDebugConsole
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="最後に">最後に&lt;/h2>
+&lt;p>意外と簡単にWaylandへの移行が行えていい感じでした。&lt;/p>
+&lt;h2 id="参考文献">参考文献&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://wiki.archlinux.jp/index.php/Wayland" target="_blank" rel="noopener"
+>Wayland - ArchWiki&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://wiki.archlinux.jp/index.php/KDE" target="_blank" rel="noopener"
+>KDE - ArchWiki&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://wiki.archlinux.jp/index.php/SDDM" target="_blank" rel="noopener"
+>SDDM -ArchWiki&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Hugoでブログを作成した件</title><link>https://blog.amaototi.dev/p/make_blog/</link><pubDate>Wed, 03 May 2023 09:08:51 +0900</pubDate><guid>https://blog.amaototi.dev/p/make_blog/</guid><description>&lt;img src="https://blog.amaototi.dev/p/make_blog/hugo_logo.png" alt="Featured image of post Hugoでブログを作成した件" />&lt;h2 id="はじめに">はじめに&lt;/h2>
 &lt;p>勢いでこのブログを作成したので、いろんな壁にぶち当たりながらなんとか作成した感じになっています。
 作った当日にこのブログを書くことでなるべく、忘れないうちに備忘録として残しておけるようにしたいって感じですかね。
 まぁあとはきっと他の誰かが見て参考にしてくれたら嬉しいなの気持ちもちょっとあったりしたり。&lt;/p>

@@ -1,16 +1,28 @@
 <!doctype html><html lang=ja dir=ltr>
 <head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Hugoという静的サイトジェネレータでこのブログを作成したことの記録">
-<title>Hugoでブログを作成した件</title>
-<link rel=canonical href=https://blog.amaototi.dev/p/make_blog/>
-<link rel=stylesheet href=/scss/style.min.a4b80d2ef8cb84c7da62c3254fd754fcbb42f0bb2f1ebc43e8390d10ff6e5c80.css><meta property="og:title" content="Hugoでブログを作成した件">
-<meta property="og:description" content="Hugoという静的サイトジェネレータでこのブログを作成したことの記録">
-<meta property="og:url" content="https://blog.amaototi.dev/p/make_blog/">
+<meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Arch Linuxでwaylandを使いたい！ という思いつきで色々自分で調べながら試したので、その備忘録です。
+⚠注意⚠ 今回はNVIDIAのGPUを使っていません。NVIDIAのGPUを使う場合はまた違う操作が必要になるので、ArchWikiで確認してください。
+環境    名称 構成     CPU Ryzen 5 5500U   GPU AMD Radeon Graphics   OS Arch Linux x86_64   デスクトップ環境 Plasma   ディスプレイマネージャー sddm    パッケージのインストール Plasmaのwaylandパッケージをインストール PlasmaでWaylandを使用するためには追加でplasma-wayland-sessionというパッケージをインストールする必要があります。インストールしていない場合はインストールしてください。
+1  $ pacman -S plasma-wayland-session   sddmの切り替え 通常のsddmパッケージではwaylandを動かすことができないので、AURパッケージであるsddm-gitに切り替えます。
+1 2 3 4  $ pacman -S sddm-git looking for conflicting packages... :: sddm-git and sddm are in conflict.">
+<title>Arch LinuxのKDEでX11からWaylandに切り替えてみた</title>
+<link rel=canonical href=https://blog.amaototi.dev/p/archlinux-wayland/>
+<link rel=stylesheet href=/scss/style.min.a4b80d2ef8cb84c7da62c3254fd754fcbb42f0bb2f1ebc43e8390d10ff6e5c80.css><meta property="og:title" content="Arch LinuxのKDEでX11からWaylandに切り替えてみた">
+<meta property="og:description" content="Arch Linuxでwaylandを使いたい！ という思いつきで色々自分で調べながら試したので、その備忘録です。
+⚠注意⚠ 今回はNVIDIAのGPUを使っていません。NVIDIAのGPUを使う場合はまた違う操作が必要になるので、ArchWikiで確認してください。
+環境    名称 構成     CPU Ryzen 5 5500U   GPU AMD Radeon Graphics   OS Arch Linux x86_64   デスクトップ環境 Plasma   ディスプレイマネージャー sddm    パッケージのインストール Plasmaのwaylandパッケージをインストール PlasmaでWaylandを使用するためには追加でplasma-wayland-sessionというパッケージをインストールする必要があります。インストールしていない場合はインストールしてください。
+1  $ pacman -S plasma-wayland-session   sddmの切り替え 通常のsddmパッケージではwaylandを動かすことができないので、AURパッケージであるsddm-gitに切り替えます。
+1 2 3 4  $ pacman -S sddm-git looking for conflicting packages... :: sddm-git and sddm are in conflict.">
+<meta property="og:url" content="https://blog.amaototi.dev/p/archlinux-wayland/">
 <meta property="og:site_name" content="Amaototi's Site">
-<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="Hugo"><meta property="article:tag" content="GitHub"><meta property="article:tag" content="備忘録"><meta property="article:published_time" content="2023-05-03T09:08:51+09:00"><meta property="article:modified_time" content="2023-05-03T09:08:51+09:00"><meta property="og:image" content="https://blog.amaototi.dev/p/make_blog/hugo_logo.png">
-<meta name=twitter:title content="Hugoでブログを作成した件">
-<meta name=twitter:description content="Hugoという静的サイトジェネレータでこのブログを作成したことの記録"><meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://blog.amaototi.dev/p/make_blog/hugo_logo.png">
+<meta property="og:type" content="article"><meta property="article:section" content="Post"><meta property="article:tag" content="ArchLinux"><meta property="article:tag" content="Wyaland"><meta property="article:tag" content="KDE"><meta property="article:tag" content="備忘録"><meta property="article:published_time" content="2023-05-09T15:17:12+09:00"><meta property="article:modified_time" content="2023-05-09T15:17:12+09:00"><meta property="og:image" content="https://blog.amaototi.dev/p/archlinux-wayland/Wayland_Logo.png">
+<meta name=twitter:title content="Arch LinuxのKDEでX11からWaylandに切り替えてみた">
+<meta name=twitter:description content="Arch Linuxでwaylandを使いたい！ という思いつきで色々自分で調べながら試したので、その備忘録です。
+⚠注意⚠ 今回はNVIDIAのGPUを使っていません。NVIDIAのGPUを使う場合はまた違う操作が必要になるので、ArchWikiで確認してください。
+環境    名称 構成     CPU Ryzen 5 5500U   GPU AMD Radeon Graphics   OS Arch Linux x86_64   デスクトップ環境 Plasma   ディスプレイマネージャー sddm    パッケージのインストール Plasmaのwaylandパッケージをインストール PlasmaでWaylandを使用するためには追加でplasma-wayland-sessionというパッケージをインストールする必要があります。インストールしていない場合はインストールしてください。
+1  $ pacman -S plasma-wayland-session   sddmの切り替え 通常のsddmパッケージではwaylandを動かすことができないので、AURパッケージであるsddm-gitに切り替えます。
+1 2 3 4  $ pacman -S sddm-git looking for conflicting packages... :: sddm-git and sddm are in conflict."><meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.amaototi.dev/p/archlinux-wayland/Wayland_Logo.png">
 <link rel="shortcut icon" href=img/favicon.ico>
 </head>
 <body class=article-page>
@@ -77,16 +89,27 @@
 <div class=widget--toc>
 <nav id=TableOfContents>
 <ol>
-<li><a href=#はじめに>はじめに</a></li>
-<li><a href=#環境>環境</a></li>
-<li><a href=#hugoのインストール>Hugoのインストール</a></li>
-<li><a href=#テーマの設定>テーマの設定</a>
+<li><a href=#arch-linuxでwaylandを使いたい>Arch Linuxでwaylandを使いたい！</a></li>
+<li><a href=#注意>⚠注意⚠</a>
 <ol>
-<li><a href=#変更点>変更点</a></li>
+<li><a href=#環境>環境</a></li>
 </ol>
 </li>
-<li><a href=#github-pagesに登録>GitHub Pagesに登録</a></li>
-<li><a href=#まとめ>まとめ</a></li>
+<li><a href=#パッケージのインストール>パッケージのインストール</a>
+<ol>
+<li><a href=#plasmaのwaylandパッケージをインストール>Plasmaのwaylandパッケージをインストール</a></li>
+<li><a href=#sddmの切り替え>sddmの切り替え</a></li>
+<li><a href=#コンポジタ>コンポジタ</a></li>
+</ol>
+</li>
+<li><a href=#設定ファイルの作成>設定ファイルの作成</a></li>
+<li><a href=#waylandでの起動>Waylandでの起動</a>
+<ol>
+<li><a href=#デバッグツール>デバッグツール</a></li>
+</ol>
+</li>
+<li><a href=#最後に>最後に</a></li>
+<li><a href=#参考文献>参考文献</a></li>
 </ol>
 </nav>
 </div>
@@ -96,8 +119,8 @@
 <article class="has-image main-article">
 <header class=article-header>
 <div class=article-image>
-<a href=/p/make_blog/>
-<img src=/p/make_blog/hugo_logo_huf6171ab9e39e99b8563bb3587a747fa8_37967_800x0_resize_box_3.png srcset="/p/make_blog/hugo_logo_huf6171ab9e39e99b8563bb3587a747fa8_37967_800x0_resize_box_3.png 800w, /p/make_blog/hugo_logo_huf6171ab9e39e99b8563bb3587a747fa8_37967_1600x0_resize_box_3.png 1600w" width=800 height=219 loading=lazy alt="Featured image of post Hugoでブログを作成した件">
+<a href=/p/archlinux-wayland/>
+<img src=/p/archlinux-wayland/Wayland_Logo_hu14782f40a0021172f7631961041fdba8_53878_800x0_resize_box_3.png srcset="/p/archlinux-wayland/Wayland_Logo_hu14782f40a0021172f7631961041fdba8_53878_800x0_resize_box_3.png 800w, /p/archlinux-wayland/Wayland_Logo_hu14782f40a0021172f7631961041fdba8_53878_1600x0_resize_box_3.png 1600w" width=800 height=800 loading=lazy alt="Featured image of post Arch LinuxのKDEでX11からWaylandに切り替えてみた">
 </a>
 </div>
 <div class=article-details>
@@ -108,15 +131,12 @@
 </header>
 <div class=article-title-wrapper>
 <h2 class=article-title>
-<a href=/p/make_blog/>Hugoでブログを作成した件</a>
+<a href=/p/archlinux-wayland/>Arch LinuxのKDEでX11からWaylandに切り替えてみた</a>
 </h2>
-<h3 class=article-subtitle>
-Hugoという静的サイトジェネレータでこのブログを作成したことの記録
-</h3>
 </div>
 <footer class=article-time>
 <div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
-<time class=article-time--published>May 03, 2023</time>
+<time class=article-time--published>May 09, 2023</time>
 </div>
 <div><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
 <time class=article-time--reading>
@@ -127,116 +147,125 @@ Hugoという静的サイトジェネレータでこのブログを作成した�
 </div>
 </header>
 <section class=article-content>
-<h2 id=はじめに>はじめに</h2>
-<p>勢いでこのブログを作成したので、いろんな壁にぶち当たりながらなんとか作成した感じになっています。
-作った当日にこのブログを書くことでなるべく、忘れないうちに備忘録として残しておけるようにしたいって感じですかね。
-まぁあとはきっと他の誰かが見て参考にしてくれたら嬉しいなの気持ちもちょっとあったりしたり。</p>
-<h2 id=環境>環境</h2>
-<ul>
-<li>Arch Linux x86_64</li>
-<li>hugo v0.111.3+extended linux/amd64 BuildDate=unknown</li>
-<li>git version 2.40.1</li>
-<li>GitHub Pages</li>
-</ul>
-<h2 id=hugoのインストール>Hugoのインストール</h2>
-<p>自分はArch Linuxの環境だったので、以下のコマンドでインストール。</p>
+<h2 id=arch-linuxでwaylandを使いたい>Arch Linuxでwaylandを使いたい！</h2>
+<p>という思いつきで色々自分で調べながら試したので、その備忘録です。</p>
+<h2 id=注意>⚠注意⚠</h2>
+<p>今回はNVIDIAのGPUを使っていません。NVIDIAのGPUを使う場合はまた違う操作が必要になるので、<a class=link href=https://wiki.archlinux.jp/index.php/Wayland#NVIDIA_.E3.83.89.E3.83.A9.E3.82.A4.E3.83.90 target=_blank rel=noopener>ArchWiki</a>で確認してください。</p>
+<h3 id=環境>環境</h3>
+<div class=table-wrapper><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>構成</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>Ryzen 5 5500U</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>AMD Radeon Graphics</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Arch Linux x86_64</td>
+</tr>
+<tr>
+<td>デスクトップ環境</td>
+<td>Plasma</td>
+</tr>
+<tr>
+<td>ディスプレイマネージャー</td>
+<td>sddm</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id=パッケージのインストール>パッケージのインストール</h2>
+<h3 id=plasmaのwaylandパッケージをインストール>Plasmaのwaylandパッケージをインストール</h3>
+<p>PlasmaでWaylandを使用するためには追加でplasma-wayland-sessionというパッケージをインストールする必要があります。インストールしていない場合はインストールしてください。</p>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
 <pre tabindex=0 class=chroma><code><span class=lnt>1
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ pacman -S hugo
+<pre tabindex=0 class=chroma><code class=language-sh data-lang=sh>$ pacman -S plasma-wayland-session
 </code></pre></td></tr></table>
 </div>
-</div><p>他のOSを使っている人は、難しいものでもないので<a class=link href=https://gohugo.io/installation/ target=_blank rel=noopener>公式HP</a>から確認してください。</p>
-<p>インストールが終わったら今度は、<code>hugo new site &lt;string></code>で新たにディレクトリごとページを作成。</p>
+</div><h3 id=sddmの切り替え>sddmの切り替え</h3>
+<p>通常のsddmパッケージではwaylandを動かすことができないので、AURパッケージであるsddm-gitに切り替えます。</p>
 <div class=highlight><div class=chroma>
 <table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ hugo new site <span class=nb>test</span>
-Congratulations! Your new Hugo site is created in /home/amaototi/test.
-
-Just a few more steps and you<span class=err>&#39;</span>re ready to go:
-
-1. Download a theme into the same-named folder.
-   Choose a theme from https://themes.gohugo.io/ or
-   create your own with the <span class=s2>&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
-2. Perhaps you want to add some content. You can add single files
-   with <span class=s2>&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
-3. Start the built-in live server via <span class=s2>&#34;hugo server&#34;</span>.
-
-Visit https://gohugo.io/ <span class=k>for</span> quickstart guide and full documentation.
+<pre tabindex=0 class=chroma><code class=language-sh data-lang=sh>$ pacman -S sddm-git
+looking <span class=k>for</span> conflicting packages...
+:: sddm-git and sddm are in conflict. Remove sddm? <span class=o>[</span>y/N<span class=o>]</span> y <span class=c1># sddmをsddm-gitに置き換える</span>
+...
 </code></pre></td></tr></table>
 </div>
-</div><h2 id=テーマの設定>テーマの設定</h2>
-<p>Hugoはテーマを自由に決めることができるとてもカスタマイズ性の高いフレームワークなので、自分で好みのテーマを探すと良いです。
-自分はStackというテーマに。テーマは<a class=link href=https://themes.gohugo.io/ target=_blank rel=noopener>こちら</a>からどうぞ。</p>
-<p>テーマを決めたら<code>git init</code>からの<code>git submodule add https://github.com/CaiJimmy/hugo-theme-stack/ themes/hugo-theme-stack</code>でテーマをインストール。ここは各自選んだテーマのドキュメントを確認してください。</p>
-<p>インストールができたら、<code>themes/hugo-themes-stack/examples</code>の中にある<code>config.yaml</code>と<code>content/</code>を先程作成したディレクトリ直下にコピー。その際、<code>config.toml</code>は削除します。</p>
-<p>ここまで終わった状態で<code>hugo server -D</code>をして、<code>http://localhost:1313/</code>にアクセスすると、、、</p>
-<p><img src=/p/make_blog/hugo_test.png width=1570 height=985 srcset="/p/make_blog/hugo_test_hu593a87b880bdb1a81c067c5062ff04f2_447402_480x0_resize_box_3.png 480w, /p/make_blog/hugo_test_hu593a87b880bdb1a81c067c5062ff04f2_447402_1024x0_resize_box_3.png 1024w" loading=lazy class=gallery-image data-flex-grow=159 data-flex-basis=382px></p>
-<p>といった感じで動きます。感動。
-そしたら次はカスタマイズをしてきます。</p>
-<p>と言ってもやることは、不必要なexampleを消すのと、config.yamlの編集を行うだけ。</p>
-<h3 id=変更点>変更点</h3>
+</div><h3 id=コンポジタ>コンポジタ</h3>
+<p>コンポジタとして、KDEのKwinをインストールします。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-sh data-lang=sh>$ pacman -S KWin
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=設定ファイルの作成>設定ファイルの作成</h2>
+<p>waylandで動かすために新たに設定ファイルを<code>/etc/sddm.conf.d/</code>の下に作成します。ファイル名は<code>/etc/sddm.conf.d/10-wayland.conf</code>としてください。また、ディレクトリが存在しない場合は作成してください。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>[General]
+DisplayServer=wayland
+GreeterEnvironment=QT_WAYLAND_SHELL_INTEGRATION=layer-shell
+
+[Wayland]
+CompositorCommand=kwin_wayland --no-lockscreen
+</code></pre></td></tr></table>
+</div>
+</div><p>ファイルを保存したら再起動します。</p>
+<h2 id=waylandでの起動>Waylandでの起動</h2>
+<p>ログイン画面になったら、画面左上にあるプルダウンリストからWaylandを選択しそのままログインします。するとWaylandで起動することができます。</p>
+<h3 id=デバッグツール>デバッグツール</h3>
+<p>KWinを使用している場合、以下のコマンドを実行することでどのアプリケーションがWaylandで実行されているかの確認を行えます。</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-sh data-lang=sh>$ qdbus org.kde.KWin /KWin org.kde.KWin.showDebugConsole
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=最後に>最後に</h2>
+<p>意外と簡単にWaylandへの移行が行えていい感じでした。</p>
+<h2 id=参考文献>参考文献</h2>
 <ul>
-<li><code>languageCode</code>と<code>DefaultContentLnaguage</code>を<code>ja</code>に</li>
-<li><code>publishDir: docs</code>をどっか適当に追記</li>
-<li><code>parms</code>内部
-<ul>
-<li><code>sidebar</code>の中身全般
-<ul>
-<li><code>emoji</code>はアイコンの右下にちっちゃくつくやつ</li>
+<li><a class=link href=https://wiki.archlinux.jp/index.php/Wayland target=_blank rel=noopener>Wayland - ArchWiki</a></li>
+<li><a class=link href=https://wiki.archlinux.jp/index.php/KDE target=_blank rel=noopener>KDE - ArchWiki</a></li>
+<li><a class=link href=https://wiki.archlinux.jp/index.php/SDDM target=_blank rel=noopener>SDDM -ArchWiki</a></li>
 </ul>
-</li>
-<li><code>article</code>の中身ちょっと
-<ul>
-<li><code>math</code>は数学の記法をつかえるようにするかどうか</li>
-<li><code>toc</code>は目次の表示非表示</li>
-<li><code>readingTime</code>は読了時間の表示</li>
-<li><code>license</code>はライセンスの表示</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><code>menu</code>内部
-<ul>
-<li><code>social</code>の中身
-<ul>
-<li><code>GitHub</code>と<code>Twitter</code>のリンクを追加</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>だいたいこの程度の変更。あとは、公式ドキュメントを読んだり、先人たちの知恵を借りたりという感じ。</p>
-<h2 id=github-pagesに登録>GitHub Pagesに登録</h2>
-<p>GitHub Pagesを使うことで無料で公開することができるとのことだったので実践。</p>
-<p>GitHubでリポジトリを作成し、Settings > Pagesから設定を行い公開する。
-この際、<code>config.yaml</code>の<code>baseurl</code>を<code>https://&lt;username>.github.io/&lt;repoの名前></code>に変更することを忘れずに行うこと。</p>
-<p>また、カスタムドメインにする際も、同様に<code>baseurl</code>をちゃんと設定してあげないとバグるので要注意。</p>
-<h2 id=まとめ>まとめ</h2>
-<p>思ってたよりも数倍簡単にブログを作れて良かったなというお気持ち。</p>
-<p>今度は、勝手にpushとかしてくれるようにしたいな。</p>
 </section>
 <footer class=article-footer>
 <section class=article-tags>
-<a href=/tags/hugo/>Hugo</a>
-<a href=/tags/github/>GitHub</a>
+<a href=/tags/archlinux/>ArchLinux</a>
+<a href=/tags/wyaland/>Wyaland</a>
+<a href=/tags/kde/>KDE</a>
 <a href=/tags/%E5%82%99%E5%BF%98%E9%8C%B2/>備忘録</a>
 </section>
 </footer>
@@ -246,12 +275,12 @@ Visit https://gohugo.io/ <span class=k>for</span> quickstart guide and full docu
 <div class=related-content>
 <div class="flex article-list--tile">
 <article class=has-image>
-<a href=/p/archlinux-wayland/>
+<a href=/p/make_blog/>
 <div class=article-image>
-<img src=/p/archlinux-wayland/Wayland_Logo.bb71d17d593aaea7217bff8fd11cfa40_hu14782f40a0021172f7631961041fdba8_53878_250x150_fill_box_smart1_3.png width=250 height=150 loading=lazy alt="Featured image of post Arch LinuxのKDEでX11からWaylandに切り替えてみた" data-key=ArchLinux-Wayland data-hash="md5-u3HRfVk6rqche/+P0Rz6QA==">
+<img src=/p/make_blog/hugo_logo.5210241f69d6d36fac457a84c960a25e_huf6171ab9e39e99b8563bb3587a747fa8_37967_250x150_fill_box_smart1_3.png width=250 height=150 loading=lazy alt="Featured image of post Hugoでブログを作成した件" data-key=make_blog data-hash="md5-UhAkH2nW02+sRXqEyWCiXg==">
 </div>
 <div class=article-details>
-<h2 class=article-title>Arch LinuxのKDEでX11からWaylandに切り替えてみた</h2>
+<h2 class=article-title>Hugoでブログを作成した件</h2>
 </div>
 </a>
 </article>
